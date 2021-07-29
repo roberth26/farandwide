@@ -1,0 +1,24 @@
+<header>
+    <h1>Header</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" class="{{#match '/' exact}}active{{/match}}"
+                    >Home</a
+                >
+            </li>
+            <li>
+                <a href="/about" class="{{#match '/about'}}active{{/match}}"
+                    >About</a
+                >
+            </li>
+            <li>
+                <a
+                    href="/team/rosanne"
+                    class="{{#match '/team'}}active{{/match}}"
+                    >Team</a
+                >
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,20 @@
+{
+    "name": "farandwide",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node ./scripts/start.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "glob": "^7.1.7",
+        "handlebars": "^4.7.7"
+    },
+    "devDependencies": {
+        "open": "^8.2.1"
+    }
+}
