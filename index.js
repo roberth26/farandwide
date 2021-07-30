@@ -76,8 +76,6 @@ app.get('/team/', function (req, res) {
     res.redirect('/team/rosanne');
 });
 
-console.log(pages);
-
 // 404
 app.use(function (req, res) {
     res.status(404);
