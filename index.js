@@ -76,10 +76,14 @@ app.get('/team/', function (req, res) {
     res.redirect('/team/rosanne');
 });
 
+console.log(pages);
+
 // 404
 app.use(function (req, res) {
     res.status(404);
-    res.send('404: Page Not Found');
+    const [, fourOFour] = pages.find(([path]) => path === '/404');
+
+    res.send(fourOFour?.({ path: req.path }) || '404: Page Not Found');
 });
 
 app.listen(process.env.PORT);
