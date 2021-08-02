@@ -28,6 +28,14 @@ h5 {
     margin-bottom: 24px;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
 p {
     margin-bottom: 32px;
 }
@@ -114,7 +122,6 @@ a.active {
 }
 
 #page-title {
-    font-size: 2.8rem;
     margin: 0;
 }
 
@@ -122,6 +129,42 @@ a.active {
     margin: 32px;
     display: flex;
     justify-content: center;
+}
+
+#footer .attribution {
+    font-size: 1.2rem;
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.title-block__content {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+.title-block__title {
+    margin-bottom: 16px;
+}
+
+.title-block__image {
+    max-width: 50%;
+    margin-left: 32px;
+}
+
+.title-block--reversed {
+    flex-direction: row-reverse;
+}
+
+.title-block--reversed .title-block__image {
+    margin-left: auto;
+    margin-right: 32px;
 }
 
 #home #hero {
@@ -204,6 +247,21 @@ a.active {
         display: block;
         padding-top: 16px;
         padding-bottom: 16px;
+    }
+
+    .title-block {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title-block__content {
+        margin-bottom: 16px;
+        background: none !important;
+    }
+
+    .title-block__image {
+        margin: 0 auto !important;
+        max-width: 60%;
     }
 
     #home #hero {
