@@ -16,7 +16,7 @@
 brew install git nvm
 ```
 
-### 3) install eb-cli deeps:
+### 3) install eb-cli deps:
 
 ```
 brew install zlib openssl readline
