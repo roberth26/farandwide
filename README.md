@@ -1,3 +1,5 @@
+[Visit Site](http://node-env.eba-2fksixhq.us-west-1.elasticbeanstalk.com/)
+
 # Development & Deployment Instructions
 
 (only for MacOS)
