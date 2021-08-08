@@ -15,6 +15,11 @@ hbs.registerHelper('match', function (path, exactOrOptions, maybeOptions) {
     return shouldPrint ? options.fn(this) : null;
 });
 
+hbs.registerHelper('join', function (...pathsAndOptions) {
+    const [_options, ...paths] = pathsAndOptions.reverse();
+    return join(...paths.reverse());
+});
+
 // find partials
 const partialPaths = await new Promise(resolve => {
     glob('./partials/**/*.html', (_error, partialPaths) => {
@@ -62,12 +67,14 @@ const pages = await Promise.all(
 
 const app = express();
 
-app.use('/static', express.static('static'));
+const STATIC_PATH = '/static';
+
+app.use(STATIC_PATH, express.static('static'));
 
 // routes
 pages.forEach(([path, template]) => {
     app.get(path, (req, res) => {
-        res.send(template({ path: req.path }));
+        res.send(template({ path: req.path, static: STATIC_PATH }));
     });
 });
 
