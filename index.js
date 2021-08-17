@@ -1,6 +1,7 @@
 import { relative, join } from 'path';
 import { readFile } from 'fs/promises';
 import express from 'express';
+import useragent from 'express-useragent';
 import hbs from 'handlebars';
 import glob from 'glob';
 
@@ -67,6 +68,8 @@ const pages = await Promise.all(
 
 const app = express();
 
+app.use(useragent.express());
+
 const STATIC_PATH = '/static';
 
 app.use(STATIC_PATH, express.static('static'));
@@ -74,7 +77,14 @@ app.use(STATIC_PATH, express.static('static'));
 // routes
 pages.forEach(([path, template]) => {
     app.get(path, (req, res) => {
-        res.send(template({ path: req.path, static: STATIC_PATH }));
+        res.send(
+            template({
+                path: req.path,
+                static: STATIC_PATH,
+                useragent: req.useragent,
+                isMobile: req.useragent.isMobile,
+            })
+        );
     });
 });
 
