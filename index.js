@@ -10,10 +10,7 @@ hbs.registerHelper('match', function (path, exactOrOptions, maybeOptions) {
     const options =
         exactOrOptions === undefined ? maybeOptions : exactOrOptions;
     const currentPath = options.data.root.path;
-    const shouldPrint = exact
-        ? path === currentPath
-        : currentPath.startsWith(path);
-    return shouldPrint ? options.fn(this) : null;
+    return exact ? path === currentPath : currentPath.startsWith(path);
 });
 
 hbs.registerHelper('join', function (...pathsAndOptions) {

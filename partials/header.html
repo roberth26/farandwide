@@ -5,19 +5,19 @@
     <nav id="nav">
         <ul>
             <li>
-                <a href="/" class="{{#match '/' exact}}active{{/match}}"
+                <a href="/" class="{{#if (match '/' exact)}}active{{/if}}"
                     >Inspire</a
                 >
             </li>
             <li>
-                <a href="/about" class="{{#match '/about'}}active{{/match}}"
+                <a href="/about" class="{{#if (match '/about')}}active{{/if}}"
                     >About Us</a
                 >
             </li>
             <li>
                 <a
                     href="/team/rosanne"
-                    class="{{#match '/team'}}active{{/match}}"
+                    class="{{#if (match '/team')}}active{{/if}}"
                     >Our Team</a
                 >
             </li>
