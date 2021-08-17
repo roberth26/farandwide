@@ -93,11 +93,11 @@ app.get('/team/', function (req, res) {
     res.redirect('/team/rosanne');
 });
 
+const [, fourOFour] = pages.find(([path]) => path === '/404');
+
 // 404
 app.use(function (req, res) {
     res.status(404);
-    const [, fourOFour] = pages.find(([path]) => path === '/404');
-
     res.send(fourOFour?.({ path: req.path }) || '404: Page Not Found');
 });
 
