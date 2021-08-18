@@ -26,6 +26,7 @@ h5 {
     color: rgb(71, 67, 63);
     font-size: 2rem;
     margin-bottom: 24px;
+    text-shadow: 0 0 4px white;
 }
 
 h1 {
@@ -74,11 +75,14 @@ p {
 
 .sidebar-layout {
     display: flex;
+    align-items: flex-start;
     margin-top: 32px;
 }
 
 .sidebar-layout__sidebar {
     flex-basis: 25%;
+    position: sticky;
+    top: 24px;
     margin-right: 32px;
 }
 
@@ -86,12 +90,18 @@ p {
     flex: 1;
 }
 
-#nav ul,
-#nav li {
+#nav ul {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 32px;
+}
+
+#nav li {
+    margin-right: 24px;
+}
+
+#nav li:last-of-type {
+    margin-right: 0;
 }
 
 #nav a {
@@ -171,7 +181,14 @@ a.active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 32px;
+}
+
+#home #hero-left {
+    margin-right: 16px;
+}
+
+#home #hero-right {
+    margin-left: 16px;
 }
 
 #home #hero-left,
@@ -247,6 +264,10 @@ a.active {
         display: block;
         padding-top: 16px;
         padding-bottom: 16px;
+    }
+
+    #page-title {
+        margin-bottom: 16px;
     }
 
     .title-block {

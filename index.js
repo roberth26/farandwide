@@ -95,7 +95,10 @@ const [, fourOFour] = pages.find(([path]) => path === '/404');
 // 404
 app.use(function (req, res) {
     res.status(404);
-    res.send(fourOFour?.({ path: req.path }) || '404: Page Not Found');
+    res.send(
+        fourOFour?.({ path: req.path, static: STATIC_PATH }) ||
+            '404: Page Not Found'
+    );
 });
 
 app.listen(process.env.PORT);
