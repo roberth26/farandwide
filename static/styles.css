@@ -260,6 +260,10 @@ a.active {
         flex-direction: column;
     }
 
+    .sidebar-layout__sidebar {
+        position: initial;
+    }
+
     #header {
         display: block;
         padding-top: 16px;
