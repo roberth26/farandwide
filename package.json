@@ -6,17 +6,20 @@
     "type": "module",
     "scripts": {
         "dev": "node ./scripts/start.js",
-        "start": "node ./index.js"
+        "start": "node ./index.js",
+        "postinstall": "node ./scripts/build.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "express": "^4.17.1",
         "express-useragent": "^1.0.15",
         "glob": "^7.1.7",
         "handlebars": "^4.7.7"
     },
     "devDependencies": {
+        "fs-extra": "^10.0.0",
         "open": "^8.2.1"
     }
 }
