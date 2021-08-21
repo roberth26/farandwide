@@ -113,12 +113,12 @@ p {
 }
 
 #nav a:hover {
-    color: black;
+    color: rgb(40, 37, 35);
     font-weight: bold;
 }
 
 a.active {
-    color: black;
+    color: rgb(40, 37, 35);
     font-weight: bold;
 }
 
@@ -307,6 +307,11 @@ a.active {
 #team #sidebar a {
     text-decoration: none;
     color: inherit;
+}
+
+#team #sidebar a:hover {
+    color: rgb(40, 37, 35);
+    font-weight: bold;
 }
 
 @media screen and (max-width: 640px) {
