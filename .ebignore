@@ -1,8 +1,6 @@
 .prettierrc
 README.md
 .husky
-.elasticbeanstalk
 .vscode
 scripts
 .gitignore
-.ebignore
