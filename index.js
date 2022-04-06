@@ -5,11 +5,19 @@ import useragent from 'express-useragent';
 import hbs from 'handlebars';
 import glob from 'glob';
 
+const STATIC_PATH = '/static';
+
+hbs.registerHelper('redirect', function (path, options) {
+    const { response } = options.data.root;
+    response.redirect(path);
+    response.end();
+});
+
 hbs.registerHelper('match', function (path, exactOrOptions, maybeOptions) {
     const exact = exactOrOptions === undefined;
     const options =
         exactOrOptions === undefined ? maybeOptions : exactOrOptions;
-    const currentPath = options.data.root.path;
+    const currentPath = options.data.root.request.path;
     return exact ? path === currentPath : currentPath.startsWith(path);
 });
 
@@ -66,38 +74,36 @@ const pages = await Promise.all(
 const app = express();
 
 app.use(useragent.express());
-
-const STATIC_PATH = '/static';
-
 app.use(STATIC_PATH, express.static('static'));
 
 // routes
 pages.forEach(([path, template]) => {
-    app.get(path, (req, res) => {
-        res.send(
-            template({
-                path: req.path,
-                static: STATIC_PATH,
-                useragent: req.useragent,
-                isMobile: req.useragent.isMobile,
-            })
-        );
+    app.get(path, (request, response, next) => {
+        const page = template({
+            request,
+            response,
+            path: request.path,
+            static: STATIC_PATH,
+            isMobile: request.useragent.isMobile,
+        });
+        if (!response.headersSent) {
+            response.send(page);
+        }
     });
-});
-
-// redirects
-app.get('/team/', function (req, res) {
-    res.redirect('/team/rosanne');
 });
 
 const [, fourOFour] = pages.find(([path]) => path === '/404');
 
 // 404
-app.use(function (req, res) {
-    res.status(404);
-    res.send(
-        fourOFour?.({ path: req.path, static: STATIC_PATH }) ||
-            '404: Page Not Found'
+app.use(function (request, response) {
+    response.status(404);
+    response.send(
+        fourOFour?.({
+            request,
+            response,
+            path: request.path,
+            static: STATIC_PATH,
+        }) || '404: Page Not Found'
     );
 });
 
