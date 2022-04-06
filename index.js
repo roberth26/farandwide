@@ -10,7 +10,6 @@ const STATIC_PATH = '/static';
 hbs.registerHelper('redirect', function (path, options) {
     const { response } = options.data.root;
     response.redirect(path);
-    response.end();
 });
 
 hbs.registerHelper('match', function (path, exactOrOptions, maybeOptions) {
