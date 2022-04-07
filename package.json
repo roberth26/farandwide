@@ -9,7 +9,7 @@
         "npm": ">=6.14.13"
     },
     "scripts": {
-        "dev": "node ./scripts/start.js",
+        "dev": "npm run build && node ./scripts/dev.js",
         "start": "node ./index.js",
         "build": "node ./scripts/build.js",
         "postinstall": "node ./scripts/build.js"
@@ -25,6 +25,7 @@
     },
     "devDependencies": {
         "fs-extra": "^10.0.0",
+        "node-watch": "^0.7.3",
         "open": "^8.2.1"
     }
 }

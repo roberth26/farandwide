@@ -1,4 +1,4 @@
-import { relative, join } from 'path';
+import { relative, join, resolve } from 'path';
 import { readFile } from 'fs/promises';
 import express from 'express';
 import useragent from 'express-useragent';
@@ -8,8 +8,8 @@ import glob from 'glob';
 const STATIC_PATH = '/static';
 
 hbs.registerHelper('redirect', function (path, options) {
-    const { response } = options.data.root;
-    response.redirect(path);
+    const { request, response } = options.data.root;
+    response.redirect(resolve(request.path, path));
 });
 
 hbs.registerHelper('match', function (path, exactOrOptions, maybeOptions) {

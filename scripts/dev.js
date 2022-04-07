@@ -1,5 +1,5 @@
 import { fork } from 'child_process';
-import { watch } from 'fs';
+import watch from 'node-watch';
 import open from 'open';
 
 process.env['PORT'] = 3000;
@@ -11,9 +11,9 @@ function run() {
     childProcess = fork('index.js');
 }
 
-watch('pages', { encoding: 'utf-8' }, run);
-watch('partials', { encoding: 'utf-8' }, run);
-watch('static', {}, run);
+watch('pages', { encoding: 'utf-8', recursive: true }, run);
+watch('partials', { encoding: 'utf-8', recursive: true }, run);
+watch('static', { recursive: true }, run);
 
 // init
 run();
