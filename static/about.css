@@ -1,0 +1,47 @@
+#about #hero {
+  display: flex;
+  margin-top: 32px;
+}
+
+#about #hero {
+  align-items: flex-end;
+}
+
+#about #hero-left {
+  flex: 1;
+}
+
+#about #hero-right {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -10%;
+  margin-left: -5%;
+}
+
+#about #hero-image {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+  #about h2 {
+    text-align: center;
+  }
+
+  #about #hero {
+    flex-direction: column;
+  }
+
+  #about #hero-left {
+    order: 2;
+  }
+
+  #about #hero-right {
+    justify-content: center;
+    margin: 0;
+  }
+
+  #about #hero-image {
+    max-width: 75%;
+  }
+}

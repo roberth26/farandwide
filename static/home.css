@@ -1,0 +1,53 @@
+#home #hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#home #hero-left {
+  margin-right: 16px;
+}
+
+#home #hero-right {
+  margin-left: 16px;
+}
+
+#home #hero-left,
+#home #hero-right {
+  flex-basis: 100%;
+}
+
+#home #hero-image {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+  #home #hero {
+    display: block;
+  }
+
+  #home #hero-left {
+    margin-bottom: 32px;
+    margin-right: 0;
+  }
+
+  #home #hero-right {
+    margin-left: 0;
+  }
+}
+
+#home #video {
+  padding: 5% 0;
+  background: linear-gradient(
+    45deg,
+    rgb(125 84 155),
+    rgb(164 165 230),
+    rgb(200 126 200)
+  );
+}
+
+#home #video-container {
+  width: 864px;
+  max-width: 100%;
+  margin: 0 auto;
+}

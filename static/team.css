@@ -1,0 +1,22 @@
+#team #hero {
+  display: flex;
+  margin-top: 32px;
+}
+
+#team #sidebar ul {
+  margin-bottom: 48px;
+}
+
+#team #sidebar li {
+  margin-bottom: 8px;
+}
+
+#team #sidebar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#team #sidebar a:hover {
+  color: rgb(40, 37, 35);
+  font-weight: bold;
+}
