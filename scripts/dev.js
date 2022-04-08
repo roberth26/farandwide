@@ -7,8 +7,8 @@ process.env['PORT'] = 3000;
 let childProcess;
 
 function run() {
-    childProcess?.kill();
-    childProcess = fork('index.js');
+  childProcess?.kill();
+  childProcess = fork('index.js');
 }
 
 watch('pages', { encoding: 'utf-8', recursive: true }, run);

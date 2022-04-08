@@ -1,31 +1,31 @@
 {
-    "name": "farandwide",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "type": "module",
-    "engines": {
-        "node": ">=14.17.3",
-        "npm": ">=6.14.13"
-    },
-    "scripts": {
-        "dev": "npm run build && node ./scripts/dev.js",
-        "start": "node ./index.js",
-        "build": "node ./scripts/build.js",
-        "postinstall": "node ./scripts/build.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.4",
-        "express": "^4.17.1",
-        "express-useragent": "^1.0.15",
-        "glob": "^7.1.7",
-        "handlebars": "^4.7.7"
-    },
-    "devDependencies": {
-        "fs-extra": "^10.0.0",
-        "node-watch": "^0.7.3",
-        "open": "^8.2.1"
-    }
+  "name": "farandwide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=14.17.3",
+    "npm": ">=6.14.13"
+  },
+  "scripts": {
+    "dev": "npm run build && node ./scripts/dev.js",
+    "start": "node ./index.js",
+    "build": "node ./scripts/build.js",
+    "postinstall": "node ./scripts/build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "express": "^4.17.1",
+    "express-useragent": "^1.0.15",
+    "glob": "^7.1.7",
+    "handlebars": "^4.7.7"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "node-watch": "^0.7.3",
+    "open": "^8.2.1"
+  }
 }
