@@ -22,7 +22,9 @@
     "express-engine-jsx": "^3.4.3",
     "express-useragent": "^1.0.15",
     "glob": "^7.1.7",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "fs-extra": "^10.0.0",
