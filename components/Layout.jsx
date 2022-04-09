@@ -2,5 +2,8 @@
   <head>
     <title>{title}</title>
   </head>
-  <body>{children}</body>
+  <body>
+    {children}
+    <Test />
+  </body>
 </html>;
