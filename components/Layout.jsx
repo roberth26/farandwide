@@ -1,9 +1,8 @@
 <html>
-  <head>
-    <title>{title}</title>
-  </head>
-  <body>
+  <Head title={title}>{head}</Head>
+  <body id={pageID}>
+    <Header />
     {children}
-    <Test />
+    <Footer />
   </body>
 </html>;

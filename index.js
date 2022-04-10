@@ -1,71 +1,61 @@
-import { relative, join, resolve } from 'path';
-import { readFile } from 'fs/promises';
+import { relative, join, resolve, basename } from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import useragent from 'express-useragent';
-import hbs from 'handlebars';
 import glob from 'glob';
+import engine from 'express-engine-jsx';
 
 const STATIC_PATH = '/static';
 
-hbs.registerHelper('redirect', function (path, options) {
-  const { request, response } = options.data.root;
-  response.redirect(resolve(request.path, path));
-});
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const res = rel => resolve(__dirname, rel);
 
-hbs.registerHelper('match', function (path, exactOrOptions, maybeOptions) {
-  const exact = exactOrOptions === undefined;
-  const options = exactOrOptions === undefined ? maybeOptions : exactOrOptions;
-  const currentPath = options.data.root.request.path;
-  return exact ? path === currentPath : currentPath.startsWith(path);
-});
-
-hbs.registerHelper('join', function (...pathsAndOptions) {
-  const [_options, ...paths] = pathsAndOptions.reverse();
-  return join(...paths.reverse());
-});
-
-// find partials
-const partialPaths = await new Promise(resolve => {
-  glob('./partials/**/*.html', (_error, partialPaths) => {
-    resolve(partialPaths);
+// find components
+const componentPaths = await new Promise(resolve => {
+  glob('./components/**/*.jsx', (_error, componentPaths) => {
+    resolve(componentPaths);
   });
 });
 
-// load partials
-await Promise.all(
-  partialPaths.map(async partialPath => {
-    const partialName = relative('./partials/', partialPath).replace(
-      '.html',
+// TODO: comment
+const components = Object.fromEntries(
+  componentPaths.map(componentPath => {
+    const componentRelPath = relative('./components/', componentPath).replace(
+      '.jsx',
       ''
     );
-    const partialContent = await readFile(partialPath, {
-      encoding: 'utf-8',
-    });
-    hbs.registerPartial(partialName, partialContent);
+    const componentName = basename(componentRelPath);
+
+    const component = engine.require(
+      `./${componentRelPath}`,
+      res('./components')
+    ).default;
+    return [componentName, component];
   })
 );
 
-// find templates
-const templatePaths = await new Promise(resolve => {
-  glob('./pages/**/*.html', (_error, templatePaths) => {
-    resolve(templatePaths);
+// find pages
+const pagePaths = await new Promise(resolve => {
+  glob('./pages/**/*.jsx', (_error, pagePaths) => {
+    resolve(pagePaths);
   });
 });
 
-// load templates
-const pages = await Promise.all(
-  templatePaths.map(async templatePath => {
-    const pagePath = join(
+// TODO: comment
+const pages = Object.fromEntries(
+  pagePaths.map(pagePath => {
+    const pageRelPath = relative('./pages/', pagePath);
+    // cache
+    engine.require(`./${pageRelPath.replace('.jsx', '')}`, res('./pages'))
+      .default;
+    const pageAbsPath = res(pagePath);
+    const route = join(
       '/',
-      relative('./pages/', templatePath)
-        .replace('index.html', '')
-        .replace('.html', '')
+      relative('./pages/', pageRelPath)
+        .replace('index.jsx', '')
+        .replace('.jsx', '')
     );
-    const templateContent = await readFile(templatePath, {
-      encoding: 'utf-8',
-    });
-    const template = hbs.compile(templateContent);
-    return [pagePath, template];
+    return [route, pageAbsPath];
   })
 );
 
@@ -74,34 +64,51 @@ const app = express();
 app.use(useragent.express());
 app.use(STATIC_PATH, express.static('static'));
 
+const match = currentPath => (path, options) => {
+  return options?.exact ? path === currentPath : currentPath.startsWith(path);
+};
+
 // routes
-pages.forEach(([path, template]) => {
-  app.get(path, (request, response, next) => {
-    const page = template({
-      request,
-      response,
-      path: request.path,
-      static: STATIC_PATH,
-      isMobile: request.useragent.isMobile,
+Object.entries(pages).forEach(([route, page]) => {
+  app.get(route, (request, response) => {
+    const html = engine(page, {
+      locals: {
+        request,
+        response,
+        join,
+        match: match(route),
+        path: request.path,
+        staticPath: STATIC_PATH,
+        isMobile: request.useragent.isMobile,
+        ...components,
+      },
     });
     if (!response.headersSent) {
-      response.send(page);
+      response.send(html);
     }
   });
 });
 
-const [, fourOFour] = pages.find(([path]) => path === '/404');
+const fourOFour = pages['/404'];
 
 // 404
 app.use(function (request, response) {
   response.status(404);
   response.send(
-    fourOFour?.({
-      request,
-      response,
-      path: request.path,
-      static: STATIC_PATH,
-    }) || '404: Page Not Found'
+    fourOFour == null
+      ? '404: Page Not Found'
+      : engine(fourOFour, {
+          locals: {
+            request,
+            response,
+            join,
+            match: match(route),
+            path: request.path,
+            staticPath: STATIC_PATH,
+            isMobile: request.useragent.isMobile,
+            ...components,
+          },
+        })
   );
 });
 
