@@ -12,7 +12,7 @@ function run() {
 }
 
 watch('pages', { encoding: 'utf-8', recursive: true }, run);
-watch('partials', { encoding: 'utf-8', recursive: true }, run);
+watch('components', { encoding: 'utf-8', recursive: true }, run);
 watch('static', { recursive: true }, run);
 
 // init

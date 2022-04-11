@@ -1,6 +1,6 @@
 <Layout
   title="Far &amp; Wide Studios"
-  head={<link rel="stylesheet" href={join(staticPath, '/home.css')} />}
+  head={<link rel="stylesheet" href={staticAsset('/home.css')} />}
   pageID="home"
 >
   <main>
@@ -8,7 +8,7 @@
       <div id="hero-left">
         <img
           id="hero-image"
-          src={join(staticPath, '/images/inspire.png')}
+          src={staticAsset('/images/inspire.png')}
           alt="Inspire poster"
         />
       </div>

@@ -5,17 +5,17 @@
   <nav id="nav">
     <ul>
       <li>
-        <a href="/" class={match('/', { exact: true }) ? 'active' : undefined}>
+        <a href="/" class={match('/', { exact: true }) ? 'active' : null}>
           Inspire
         </a>
       </li>
       <li>
-        <a href="/about" class={match('/about') ? 'active' : undefined}>
+        <a href="/about" class={match('/about') ? 'active' : null}>
           About Us
         </a>
       </li>
       <li>
-        <a href="/team" class={match('/team') ? 'active' : undefined}>
+        <a href="/team" class={match('/team') ? 'active' : null}>
           Our Team
         </a>
       </li>

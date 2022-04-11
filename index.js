@@ -68,6 +68,14 @@ const match = currentPath => (path, options) => {
   return options?.exact ? path === currentPath : currentPath.startsWith(path);
 };
 
+const redirect = (request, response) => path => {
+  response.redirect(resolve(request.path, path));
+};
+
+const staticAsset = path => {
+  return join(STATIC_PATH, path);
+};
+
 // routes
 Object.entries(pages).forEach(([route, page]) => {
   app.get(route, (request, response) => {
@@ -76,10 +84,12 @@ Object.entries(pages).forEach(([route, page]) => {
         request,
         response,
         join,
+        staticAsset,
         match: match(route),
         path: request.path,
         staticPath: STATIC_PATH,
         isMobile: request.useragent.isMobile,
+        redirect: redirect(request, response),
         ...components,
       },
     });
@@ -102,10 +112,12 @@ app.use(function (request, response) {
             request,
             response,
             join,
-            match: match(route),
+            staticAsset,
+            match: match(request.path),
             path: request.path,
             staticPath: STATIC_PATH,
             isMobile: request.useragent.isMobile,
+            redirect: redirect(request, response),
             ...components,
           },
         })
