@@ -1,4 +1,8 @@
-<Layout title={title} head={head} pageID={pageID}>
+<Layout
+  title={title}
+  head={<link rel="stylesheet" href={staticAsset('/team.css')} />}
+  pageID="team"
+>
   <main class="sidebar-layout container">
     <aside id="sidebar" class="sidebar-layout__sidebar">
       <div>

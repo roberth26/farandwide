@@ -1,8 +1,4 @@
-<TeamLayout
-  title="Elisha &ndash; Far &amp; Wide Studios"
-  head={<link rel="stylesheet" href={staticAsset('/team.css')} />}
-  pageID="team"
->
+<TeamLayout title="Elisha &ndash; Far &amp; Wide Studios">
   <TeamTitleBlock
     title="Elisha Kantor"
     isReversed={false}
