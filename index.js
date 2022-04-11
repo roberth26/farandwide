@@ -17,7 +17,6 @@ const componentPaths = await new Promise(resolve => {
   });
 });
 
-// TODO: comment
 const components = Object.fromEntries(
   componentPaths.map(componentPath => {
     const componentRelPath = relative('./components/', componentPath).replace(
@@ -25,7 +24,6 @@ const components = Object.fromEntries(
       ''
     );
     const componentName = basename(componentRelPath);
-
     const component = engine.require(
       `./${componentRelPath}`,
       res('./components')
@@ -41,7 +39,6 @@ const pagePaths = await new Promise(resolve => {
   });
 });
 
-// TODO: comment
 const pages = Object.fromEntries(
   pagePaths.map(pagePath => {
     const pageRelPath = relative('./pages/', pagePath);
