@@ -39,11 +39,11 @@
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen
-            ></iframe>
+            />
           </div>
         </div>
       </div>
     </section>
   </main>
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="https://player.vimeo.com/api/player.js" />
 </Layout>;
