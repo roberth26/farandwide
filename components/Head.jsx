@@ -20,11 +20,11 @@
   <link rel="stylesheet" href={staticAsset('/reset.css')} />
   <link
     rel="stylesheet"
-    href={staticAsset('./fontawesome/css/fontawesome.min.css')}
+    href={staticAsset('/fontawesome/css/fontawesome.min.css')}
   />
   <link
     rel="stylesheet"
-    href={staticAsset('./fontawesome/css/brands.min.css')}
+    href={staticAsset('/fontawesome/css/brands.min.css')}
   />
   <link rel="stylesheet" href={staticAsset('/styles.css')} />
   {children}

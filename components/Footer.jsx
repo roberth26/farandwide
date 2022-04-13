@@ -9,7 +9,7 @@
           class="circle-link circle-link--blue"
           aria-label="facebook"
         >
-          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          <i class="fab fa-facebook-f" aria-hidden="true" />
         </a>
       </li>
       <li>
@@ -20,7 +20,7 @@
           class="circle-link circle-link--pink"
           aria-label="instagram"
         >
-          <i class="fab fa-instagram" aria-hidden="true"></i>
+          <i class="fab fa-instagram" aria-hidden="true" />
         </a>
       </li>
       <li>
@@ -31,7 +31,7 @@
           class="circle-link circle-link--red"
           aria-label="twitter"
         >
-          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <i class="fab fa-twitter" aria-hidden="true" />
         </a>
       </li>
       <li>
@@ -42,7 +42,7 @@
           class="circle-link circle-link--purple"
           aria-label="tiktok"
         >
-          <i class="fab fa-tiktok" aria-hidden="true"></i>
+          <i class="fab fa-tiktok" aria-hidden="true" />
         </a>
       </li>
       <li>
@@ -53,7 +53,7 @@
           class="circle-link circle-link--blue"
           aria-label="twitch"
         >
-          <i class="fab fa-twitch" aria-hidden="true"></i>
+          <i class="fab fa-twitch" aria-hidden="true" />
         </a>
       </li>
       <li>
@@ -64,7 +64,7 @@
           class="circle-link circle-link--pink"
           aria-label="imdb"
         >
-          <i class="fab fa-imdb" aria-hidden="true"></i>
+          <i class="fab fa-imdb" aria-hidden="true" />
         </a>
       </li>
     </ul>
